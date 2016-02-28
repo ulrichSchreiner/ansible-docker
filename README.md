@@ -40,7 +40,7 @@ alias ansible=_ansible
 Now create an inventory:
 ```
 [myhosts]
-1.2.3.4 ansible_user=myuserid
+1.2.3.4 
 ```
 
 and create a playbook:
