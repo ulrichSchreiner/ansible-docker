@@ -10,7 +10,8 @@ RUN apk add --update \
 	py-pip \
 	python \
 	python-dev \
-	sshpass
+	sshpass \
+	&& rm -rf /var/cache/apk/*
 
 ENV ANSIBLE_VERSION 2.0.1.0
 ENV WINRM_MIN_VERSION 0.1.1
