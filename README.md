@@ -1,4 +1,4 @@
-# Ansible Playbook Container
+# Ansible Container
 
 Use this container to run ansbile playbooks or other related commands. You
 should have a running `ssh-agent` to connect to your hosts. Give this
