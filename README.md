@@ -6,41 +6,23 @@ container the name of the ansible subcommand (`playbook`, `vault`, ...). If
 there is no such subcommand the container will call the plain `ansible` command
 with the given parameters.
 
-Put this in your `.bashrc`:
+Download the file `ansible` to you `~/bin` and create symlinks:
 ```bash
-_ansible() {
-  subc=$1
-  shift
-  docker run -it --rm -v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent -v `pwd`:/work ulrichschreiner/ansible $subc "$@"
-}
-_ansible_playbook() {
-  _ansible playbook "$@"
-}
-_ansible_vault() {
-  _ansible vault "$@"
-}
-_ansible_doc() {
-  _ansible doc "$@"
-}
-_ansible_pull() {
-  _ansible pull "$@"
-}
-_ansible_galaxy() {
-  _ansible galaxy "$@"
-}
-alias ansible-playbook=_ansible_playbook
-alias ansible-vault=_ansible_vault
-alias ansible-doc=_ansible_doc
-alias ansible-pull=_ansible_pull
-alias ansible-galaxy=_ansible_galaxy
-alias ansible=_ansible
-
+cd bin
+curl -sSL https://github.com/ulrichSchreiner/ansible-docker/ansible >ansible && chmod 755 ansible
+ln -s ansible ansible-playbook
+ln -s ansible ansible-vault
+ln -s ansible ansible-doc
+ln -s ansible ansible-pull
+ln -s ansible ansible-galaxy
 ```
+
+Be sure to have `~/bin` in your path.
 
 Now create an inventory:
 ```
 [myhosts]
-1.2.3.4 
+1.2.3.4
 ```
 
 and create a playbook:

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+_ansible() {
+  subc=$1
+  if [ "$#" -gt 0 ]; then
+    shift
+  else
+    subc=--help
+  fi
+  docker run -it --rm -v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent -v `pwd`:/work ulrichschreiner/ansible $subc "$@"
+}
+
+PROG=`basename $0`
+
+case "$PROG" in
+   "ansible") _ansible "$@"
+   ;;
+   "ansible-playbook") _ansible playbook "$@"
+   ;;
+   "ansible-vault") _ansible vault "$@"
+   ;;
+   "ansible-doc") _ansible doc "$@"
+   ;;
+   "ansible-pull") _ansible pull "$@"
+   ;;
+   "ansible-galaxy") _ansible galaxy "$@"
+   ;;
+esac
