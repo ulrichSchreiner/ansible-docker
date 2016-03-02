@@ -9,7 +9,7 @@ with the given parameters.
 Download the file `ansible` to you `~/bin` and create symlinks:
 ```bash
 cd bin
-curl -sSL https://github.com/ulrichSchreiner/ansible-docker/ansible >ansible && chmod 755 ansible
+curl -sSL https://raw.githubusercontent.com/ulrichSchreiner/ansible-docker/master/ansible >ansible && chmod 755 ansible
 ln -s ansible ansible-playbook
 ln -s ansible ansible-vault
 ln -s ansible ansible-doc
