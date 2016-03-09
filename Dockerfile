@@ -4,6 +4,7 @@ MAINTAINER Ulrich Schreiner <ulrich.schreiner@gmail.com>
 RUN apk add --update \
 	build-base \
 	ca-certificates \
+	git \
 	krb5-dev \
 	openssh \
 	openssl \
