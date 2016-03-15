@@ -23,5 +23,7 @@ else
   addgroup -S -g $GROUPID $GROUPNAME
   adduser -S -G $GROUPNAME -u $USERID $USERNAME
 
-  sudo -u ansible $APP "$@"
+  chown ansible:ansible $SSH_AUTH_SOCK
+  export HOME=/home/ansible
+  sudo -u ansible -E $APP "$@"
 fi
