@@ -10,6 +10,13 @@ fi
 USERID=$(stat -c '%u' /work)
 GROUPID=$(stat -c '%g' /work)
 
+if [ x$ANSIBLE_VAULT_PASSWORD != 'x' ]; then
+  echo $ANSIBLE_VAULT_PASSWORD >/vault
+  chmod 644 /vault
+  export ANSIBLE_VAULT_PASSWORD_FILE=/vault
+fi
+
+
 # check if work-directory is owned by root or another user.
 # if another user, we create one with the correct UID/GID and run
 # the command as this user. if the command creates a file it will belong
