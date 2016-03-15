@@ -7,4 +7,21 @@ if test -e "/usr/bin/ansible-$SUBAPP";then
   shift
 fi
 
-$APP "$@"
+USERID=$(stat -c '%u' /work)
+GROUPID=$(stat -c '%g' /work)
+
+# check if work-directory is owned by root or another user.
+# if another user, we create one with the correct UID/GID and run
+# the command as this user. if the command creates a file it will belong
+# to the same user as the owner of the mounted /work
+if [ $USERID = '0' ]; then
+  $APP "$@"
+else
+  USERNAME=ansible
+  GROUPNAME=ansible
+
+  addgroup -S -g $GROUPID $GROUPNAME
+  adduser -S -G $GROUPNAME -u $USERID $USERNAME
+
+  sudo -u ansible $APP "$@"
+fi

@@ -12,6 +12,7 @@ RUN apk add --update \
 	python \
 	python-dev \
 	sshpass \
+	sudo \
 	&& rm -rf /var/cache/apk/*
 
 ENV ANSIBLE_VERSION 2.0.1.0
