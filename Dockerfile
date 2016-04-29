@@ -6,8 +6,10 @@ RUN apk add --update \
 	ca-certificates \
 	git \
 	krb5-dev \
+	libffi-dev \
 	openssh \
 	openssl \
+	openssl-dev \
 	py-pip \
 	python \
 	python-dev \
@@ -21,7 +23,7 @@ ENV KERBEROS_VERSION 1.2.2
 
 RUN 	pip install "ansible==$ANSIBLE_VERSION" && \
 	pip install "pywinrm>=$WINRM_MIN_VERSION" && \
-	pip install "kerberos==$KERBEROS_VERSION"
+	pip install "kerberos==$KERBEROS_VERSION" 
 
 VOLUME /work
 WORKDIR /work
