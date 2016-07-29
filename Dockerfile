@@ -17,11 +17,12 @@ RUN apk add --update \
 	sudo \
 	&& rm -rf /var/cache/apk/*
 
-ENV ANSIBLE_VERSION 2.1.0.0
-ENV WINRM_MIN_VERSION 0.1.1
+ENV ANSIBLE_VERSION 2.1.1.0
+ENV WINRM_MIN_VERSION 0.2.0
 ENV KERBEROS_VERSION 1.2.2
 
-RUN 	pip install "ansible==$ANSIBLE_VERSION" && \
+RUN 	pip install --upgrade pip && \
+	pip install "ansible==$ANSIBLE_VERSION" && \
 	pip install "pywinrm>=$WINRM_MIN_VERSION" && \
 	pip install "kerberos==$KERBEROS_VERSION" 
 
