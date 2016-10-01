@@ -13,6 +13,7 @@ RUN apk add --update \
 	py-pip \
 	python \
 	python-dev \
+	rsync \
 	sshpass \
 	sudo \
 	&& rm -rf /var/cache/apk/*
