@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.4
 MAINTAINER Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 RUN apk add --update \
