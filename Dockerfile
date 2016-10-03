@@ -23,7 +23,7 @@ ENV WINRM_MIN_VERSION 0.2.0
 ENV KERBEROS_VERSION 1.2.2
 
 RUN 	pip install --upgrade pip && \
-	pip install "ansible==$ANSIBLE_VERSION" && \
+	pip install "ansible==$ANSIBLE_VERSION" --no-binary :all: && \
 	pip install "pywinrm>=$WINRM_MIN_VERSION" && \
 	pip install "kerberos==$KERBEROS_VERSION" 
 
