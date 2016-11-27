@@ -59,3 +59,16 @@ PLAY RECAP *********************************************************************
 myhosts     : ok=2    changed=1    unreachable=0    failed=0   
 
 ```
+
+## Ansible Configuration
+
+When using the `ansible` script you can create an environment variable `ANSIBLE_CONFIG_DIR` which should
+point to a directory with your global ansible configurations. This directory will be mounted in the 
+container at path `/etc/ansible` so you can use it for lookups or other configurations.
+
+To be flexible you can set 
+```
+export ANSIBLE_CONFIG_DIR=$HOME/Dropbox/ansible
+```
+
+and now you can run your playbooks on every computer where you have your dropbox connected.
