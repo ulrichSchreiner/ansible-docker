@@ -19,13 +19,15 @@ RUN apk add --update \
 	&& rm -rf /var/cache/apk/*
 
 ENV ANSIBLE_VERSION 2.2.1.0
-ENV WINRM_MIN_VERSION 0.2.0
+ENV BOTO_VERSION 2.46.1
+ENV WINRM_VERSION 0.2.2
 ENV KERBEROS_VERSION 1.2.2
 
 RUN 	pip install --upgrade pip && \
 	pip install "ansible==$ANSIBLE_VERSION" --no-binary :all: && \
-	pip install "pywinrm>=$WINRM_MIN_VERSION" && \
-	pip install "kerberos==$KERBEROS_VERSION" 
+	pip install "boto==$BOTO_VERSION" && \
+	pip install "pywinrm==$WINRM_VERSION" && \
+	pip install "kerberos==$KERBEROS_VERSION"
 
 VOLUME /work
 WORKDIR /work
