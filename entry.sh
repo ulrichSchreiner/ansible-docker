@@ -28,9 +28,17 @@ else
   GROUPNAME=ansible
 
   addgroup -S -g $GROUPID $GROUPNAME
-  adduser -S -G $GROUPNAME -u $USERID $USERNAME
 
-  chown ansible:ansible $SSH_AUTH_SOCK
-  export HOME=/home/ansible
+  echo "$USERNAME:x:$USERID:$USERID::/home/$USERNAME:" >> /etc/passwd
+  echo "$USERNAME:!:$(($(date +%s) / 60 / 60 / 24)):0:99999:7:::" >> /etc/shadow
+  echo "$USERNAME:x:$USERID:" >> /etc/group
+
+  mkdir /home/$USERNAME
+  chown ansible:ansible /home/$USERNAME
+  if [ ! -z "$SSH_AUTH_SOCK" ]
+  then
+    chown ansible:ansible $SSH_AUTH_SOCK
+  fi
+  export HOME=/home/$USERNAME
   sudo -u ansible -E $APP "$@"
 fi
