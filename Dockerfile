@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.6
 MAINTAINER Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 RUN apk add --update \
@@ -18,7 +18,7 @@ RUN apk add --update \
 	sudo \
 	&& rm -rf /var/cache/apk/*
 
-ENV ANSIBLE_VERSION 2.3.2.0
+ENV ANSIBLE_VERSION 2.4.0.0
 ENV BOTO_VERSION 2.46.1
 ENV WINRM_VERSION 0.2.2
 ENV KERBEROS_VERSION 1.2.2
