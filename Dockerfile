@@ -19,9 +19,9 @@ RUN apk add --update \
 	&& rm -rf /var/cache/apk/*
 
 ENV ANSIBLE_VERSION 2.4.2.0
-ENV BOTO_VERSION 2.46.1
-ENV WINRM_VERSION 0.2.2
-ENV KERBEROS_VERSION 1.2.2
+ENV BOTO_VERSION 2.48.0
+ENV WINRM_VERSION 0.3.0
+ENV KERBEROS_VERSION 1.2.5
 
 RUN 	pip install --upgrade pip && \
 	pip install "ansible==$ANSIBLE_VERSION" --no-binary :all: && \
