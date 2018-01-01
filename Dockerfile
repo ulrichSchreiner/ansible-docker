@@ -25,9 +25,7 @@ ENV KERBEROS_VERSION 1.2.5
 
 RUN 	pip install --upgrade pip && \
 	pip install "ansible==$ANSIBLE_VERSION" --no-binary :all: && \
-	pip install "boto==$BOTO_VERSION" && \
-	pip install "pywinrm==$WINRM_VERSION" && \
-	pip install "kerberos==$KERBEROS_VERSION"
+	pip install "boto==$BOTO_VERSION" "pywinrm==$WINRM_VERSION" "kerberos==$KERBEROS_VERSION" netaddr
 
 VOLUME /work
 WORKDIR /work
