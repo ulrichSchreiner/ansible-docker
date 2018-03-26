@@ -18,7 +18,7 @@ RUN apk add --update \
 	sudo \
 	&& rm -rf /var/cache/apk/*
 
-ENV ANSIBLE_VERSION 2.4.3.0
+ENV ANSIBLE_VERSION 2.5.0.0
 ENV BOTO_VERSION 2.48.0
 ENV WINRM_VERSION 0.3.0
 ENV KERBEROS_VERSION 1.2.5
