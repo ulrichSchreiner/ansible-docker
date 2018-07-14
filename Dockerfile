@@ -11,9 +11,8 @@ RUN apk add --update \
 	openssh \
 	openssl \
 	openssl-dev \
-	py-pip \
-	python \
-	python-dev \
+	python3 \
+	python3-dev \
 	rsync \
 	sshpass \
 	sudo \
@@ -21,13 +20,12 @@ RUN apk add --update \
 	&& rm -rf /var/cache/apk/*
 
 ENV ANSIBLE_VERSION 2.6.1.0
-ENV BOTO_VERSION 2.48.0
+ENV BOTO_VERSION 2.49.0
 ENV WINRM_VERSION 0.3.0
-ENV KERBEROS_VERSION 1.2.5
+ENV KERBEROS_VERSION 1.3.0
 
-RUN 	pip install --upgrade pip && \
-	pip install "ansible==$ANSIBLE_VERSION" --no-binary :all: && \
-	pip install "boto==$BOTO_VERSION" "pywinrm==$WINRM_VERSION" "kerberos==$KERBEROS_VERSION" netaddr && \
+RUN pip3 install "ansible==$ANSIBLE_VERSION" --no-binary :all: && \
+	pip3 install "boto==$BOTO_VERSION" "pywinrm==$WINRM_VERSION" "kerberos==$KERBEROS_VERSION" netaddr && \
 	curl -sSL https://github.com/dw/mitogen/archive/stable.zip > /tmp/stable.zip && \
 	mkdir /mitogen && \
 	unzip /tmp/stable.zip -d /mitogen
