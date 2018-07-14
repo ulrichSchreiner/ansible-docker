@@ -30,4 +30,10 @@ case "$PROG" in
    ;;
    "ansible-galaxy") _ansible galaxy "$@"
    ;;
+   "ansible-config") _ansible config "$@"
+   ;;
+   "ansible-console") _ansible console "$@"
+   ;;
+   "ansible-inventory") _ansible inventory "$@"
+   ;;
 esac
