@@ -24,16 +24,16 @@ ENV ANSIBLE_VERSION=2.7.0.0 \
     WINRM_VERSION=0.3.0 \
     KERBEROS_VERSION=1.3.0 \
     MITOGEN_VERSION=0.2.2 \
+    MITOGEN_VERSION=ad44ad16f1210d00bb272f6436392099458d2aab \
     ANSIBLE_STRATEGY_PLUGINS=/usr/lib/python3.6/site-packages/ansible_mitogen/plugins/strategy
 
 RUN pip3 install --upgrade pip && \
-		pip3 --no-cache-dir install "ansible==$ANSIBLE_VERSION" && \
-		pip3 --no-cache-dir  install \
-			"boto==$BOTO_VERSION" \
-			"pywinrm==$WINRM_VERSION" \
-			"kerberos==$KERBEROS_VERSION" \
-			"mitogen==$MITOGEN_VERSION" \
-			netaddr
+		pip3 --no-cache-dir install "ansible==$ANSIBLE_VERSION" \
+		     "https://github.com/dw/mitogen/archive/$MITOGEN_VERSION.zip" \
+		     "boto==$BOTO_VERSION" \
+		     "pywinrm==$WINRM_VERSION" \
+		     "kerberos==$KERBEROS_VERSION" \
+		     netaddr
 
 VOLUME /work
 WORKDIR /work
