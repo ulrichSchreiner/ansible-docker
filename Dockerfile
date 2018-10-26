@@ -19,12 +19,12 @@ RUN apk add --update \
 	unzip \
 	&& rm -rf /var/cache/apk/*
 
-ENV ANSIBLE_VERSION=2.7.0.0 \
+ENV ANSIBLE_VERSION=2.7.1.0 \
     BOTO_VERSION=2.49.0 \
     WINRM_VERSION=0.3.0 \
     KERBEROS_VERSION=1.3.0 \
     MITOGEN_VERSION=0.2.2 \
-    MITOGEN_VERSION=ad44ad16f1210d00bb272f6436392099458d2aab \
+    MITOGEN_VERSION=v0.2.3 \
     ANSIBLE_STRATEGY_PLUGINS=/usr/lib/python3.6/site-packages/ansible_mitogen/plugins/strategy
 
 RUN pip3 install --upgrade pip && \
