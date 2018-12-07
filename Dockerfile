@@ -28,12 +28,13 @@ ENV ANSIBLE_VERSION=2.7.2.0 \
     ANSIBLE_STRATEGY_PLUGINS=/usr/lib/python3.6/site-packages/ansible_mitogen/plugins/strategy
 
 RUN pip3 install --upgrade pip && \
-		pip3 --no-cache-dir install "ansible==$ANSIBLE_VERSION" \
-		     "https://github.com/dw/mitogen/archive/$MITOGEN_VERSION.zip" \
-		     "boto==$BOTO_VERSION" \
-		     "pywinrm==$WINRM_VERSION" \
-		     "kerberos==$KERBEROS_VERSION" \
-		     netaddr
+    pip3 --no-cache-dir install "ansible==$ANSIBLE_VERSION" \
+	     "https://github.com/dw/mitogen/archive/$MITOGEN_VERSION.zip" \
+	     "boto==$BOTO_VERSION" \
+	     "pywinrm==$WINRM_VERSION" \
+	     "kerberos==$KERBEROS_VERSION" \
+	     netaddr && \
+    git clone https://github.com/kewlfft/ansible-aur.git /usr/share/ansible/plugins/modules/aur
 
 VOLUME /work
 WORKDIR /work
