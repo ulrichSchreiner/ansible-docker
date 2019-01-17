@@ -8,11 +8,12 @@ _ansible() {
     subc=--help
   fi
   docker run -it --rm \
+	--net host \
 	-v $SSH_AUTH_SOCK:/ssh-agent \
 	--env SSH_AUTH_SOCK=/ssh-agent \
 	-v `pwd`:/work \
 	-v ${ANSIBLE_CONFIG_DIR:-/etc/ansible}:/etc/ansible \
-	ulrichschreiner/ansible $subc "$@"
+	ulrichschreiner/ansible $subc -u `whoami` "$@"
 }
 
 PROG=`basename $0`
