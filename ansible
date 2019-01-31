@@ -13,27 +13,27 @@ _ansible() {
 	--env SSH_AUTH_SOCK=/ssh-agent \
 	-v `pwd`:/work \
 	-v ${ANSIBLE_CONFIG_DIR:-/etc/ansible}:/etc/ansible \
-	ulrichschreiner/ansible $subc -u `whoami` "$@"
+	ulrichschreiner/ansible $subc "$@"
 }
 
 PROG=`basename $0`
 
 case "$PROG" in
-   "ansible") _ansible "$@"
+   "ansible") _ansible -u `whoami` "$@"
    ;;
-   "ansible-playbook") _ansible playbook "$@"
+   "ansible-playbook") _ansible playbook -u `whoami` "$@"
    ;;
    "ansible-vault") _ansible vault "$@"
    ;;
    "ansible-doc") _ansible doc "$@"
    ;;
-   "ansible-pull") _ansible pull "$@"
+   "ansible-pull") _ansible pull -u `whoami` "$@"
    ;;
    "ansible-galaxy") _ansible galaxy "$@"
    ;;
    "ansible-config") _ansible config "$@"
    ;;
-   "ansible-console") _ansible console "$@"
+   "ansible-console") _ansible console -u `whoami` "$@"
    ;;
    "ansible-inventory") _ansible inventory "$@"
    ;;
