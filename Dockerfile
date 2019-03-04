@@ -19,16 +19,18 @@ RUN apk add --update \
 	unzip \
 	&& rm -rf /var/cache/apk/*
 
-ENV ANSIBLE_VERSION=2.7.6.0 \
+ENV ANSIBLE_VERSION=2.7.8.0 \
     BOTO_VERSION=2.49.0 \
     WINRM_VERSION=0.3.0 \
     KERBEROS_VERSION=1.3.0 \
-    MITOGEN_VERSION=v0.2.3 \
-    ANSIBLE_STRATEGY_PLUGINS=/usr/lib/python3.6/site-packages/ansible_mitogen/plugins/strategy
+    MITOGEN_VERSION=0.2.5
 
-RUN pip3 install --upgrade pip && \
+ENV ANSIBLE_STRATEGY_PLUGINS=/mitogen-${MITOGEN_VERSION}/ansible_mitogen/plugins/strategy
+
+RUN curl -L "https://github.com/dw/mitogen/archive/v$MITOGEN_VERSION.tar.gz" | \
+		tar xzv -C / && \
+		pip3 install --upgrade pip && \
     pip3 --no-cache-dir install "ansible==$ANSIBLE_VERSION" \
-	     "https://github.com/dw/mitogen/archive/$MITOGEN_VERSION.zip" \
 	     "boto==$BOTO_VERSION" \
 	     "pywinrm==$WINRM_VERSION" \
 	     "kerberos==$KERBEROS_VERSION" \
