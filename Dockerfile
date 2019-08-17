@@ -19,11 +19,11 @@ RUN apk add --update \
 	unzip \
 	&& rm -rf /var/cache/apk/*
 
-ENV ANSIBLE_VERSION=2.8.2.0 \
+ENV ANSIBLE_VERSION=2.8.4.0 \
     BOTO_VERSION=2.49.0 \
     WINRM_VERSION=0.3.0 \
     KERBEROS_VERSION=1.3.0 \
-    MITOGEN_VERSION=823c18ec090db6f6b2c1cd557b6dc233001ca25c
+    MITOGEN_VERSION=93c97a9564a54b602f660adadff4cc12ffa3763c
 
 ENV ANSIBLE_STRATEGY_PLUGINS=/mitogen-${MITOGEN_VERSION}/ansible_mitogen/plugins/strategy
 
