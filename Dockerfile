@@ -23,11 +23,12 @@ ENV ANSIBLE_VERSION=2.8.4.0 \
     BOTO_VERSION=2.49.0 \
     WINRM_VERSION=0.3.0 \
     KERBEROS_VERSION=1.3.0 \
-    MITOGEN_VERSION=93c97a9564a54b602f660adadff4cc12ffa3763c
+    MITOGEN_VERSION=0.2.8
 
-ENV ANSIBLE_STRATEGY_PLUGINS=/mitogen-${MITOGEN_VERSION}/ansible_mitogen/plugins/strategy
+ENV ANSIBLE_STRATEGY_PLUGINS=/mitogen-${MITOGEN_VERSION}/ansible_mitogen/plugins/strategy \
+    MITOGEN_TAG=v${MITOGEN_VERSION}
 
-RUN curl -L "https://github.com/dw/mitogen/archive/$MITOGEN_VERSION.tar.gz" | \
+RUN curl -L "https://github.com/dw/mitogen/archive/$MITOGEN_TAG.tar.gz" | \
 		tar xzv -C / && \
 		pip3 install --upgrade pip && \
     pip3 --no-cache-dir install "ansible==$ANSIBLE_VERSION" \
