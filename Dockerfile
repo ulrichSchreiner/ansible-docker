@@ -26,6 +26,7 @@ ENV ANSIBLE_VERSION=2.9.0 \
     MITOGEN_VERSION=0.2.9
 
 ENV ANSIBLE_STRATEGY_PLUGINS=/mitogen-${MITOGEN_VERSION}/ansible_mitogen/plugins/strategy \
+    ANSIBLE_TRANSFORM_INVALID_GROUP_CHARS=ignore \
     MITOGEN_TAG=v${MITOGEN_VERSION}
 
 RUN curl -L "https://github.com/dw/mitogen/archive/$MITOGEN_TAG.tar.gz" | \
