@@ -19,11 +19,11 @@ RUN apk add --update \
 	unzip \
 	&& rm -rf /var/cache/apk/*
 
-ENV ANSIBLE_VERSION=2.10.0 \
+ENV ANSIBLE_VERSION=2.10.4 \
     BOTO_VERSION=2.49.0 \
     WINRM_VERSION=0.3.0 \
     KERBEROS_VERSION=1.3.0 \
-    MITOGEN_VERSION=0.2.9
+    MITOGEN_VERSION=0.3.0-rc.0
 
 ENV ANSIBLE_STRATEGY_PLUGINS=/mitogen-${MITOGEN_VERSION}/ansible_mitogen/plugins/strategy \
     ANSIBLE_TRANSFORM_INVALID_GROUP_CHARS=ignore \
