@@ -7,15 +7,25 @@ _ansible() {
   else
     subc=--help
   fi
-  docker run -it --rm \
-	--net host \
-	-v $SSH_AUTH_SOCK:/ssh-agent \
-	--env SSH_AUTH_SOCK=/ssh-agent \
-	--env ANSIBLE_VAULT_PASSWORD_FILE=$ANSIBLE_VAULT_PASSWORD_FILE \
-	-v `pwd`:/work \
-	-v ${ANSIBLE_CONFIG_DIR:-/etc/ansible}:/etc/ansible \
-	-v ${ANSIBLE_VAULT_PASSWORD_FILE:-/tmp}:${ANSIBLE_VAULT_PASSWORD_FILE:-/tmp/hosttmp} \
-	ulrichschreiner/ansible $subc "$@"
+  if [ "x$ANSIBLE_VAULT_PASSWORD_FILE" = "x" ]; then
+    docker run -it --rm \
+      --net host \
+      -v $SSH_AUTH_SOCK:/ssh-agent \
+      --env SSH_AUTH_SOCK=/ssh-agent \
+      -v `pwd`:/work \
+      -v ${ANSIBLE_CONFIG_DIR:-/etc/ansible}:/etc/ansible \
+      ulrichschreiner/ansible $subc "$@"
+  else
+    docker run -it --rm \
+      --net host \
+      -v $SSH_AUTH_SOCK:/ssh-agent \
+      --env SSH_AUTH_SOCK=/ssh-agent \
+      --env ANSIBLE_VAULT_PASSWORD_FILE=$ANSIBLE_VAULT_PASSWORD_FILE \
+      -v `pwd`:/work \
+      -v ${ANSIBLE_CONFIG_DIR:-/etc/ansible}:/etc/ansible \
+      -v ${ANSIBLE_VAULT_PASSWORD_FILE}:${ANSIBLE_VAULT_PASSWORD_FILE} \
+      ulrichschreiner/ansible $subc "$@"
+  fi
 }
 
 PROG=`basename $0`
