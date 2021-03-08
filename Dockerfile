@@ -24,7 +24,7 @@ RUN apk add --update \
 
 ENV ANSIBLE_VERSION=3.0.0 \
     ROLEPATH=/ansible/roles \
-    ANSIBLE_ROLES_PATH=/ansible_roles:$ANSIBLE_ROLES_PATH \
+    ANSIBLE_ROLES_PATH=/ansible/roles:$ANSIBLE_ROLES_PATH \
     ANSIBLE_HOST_KEY_CHECKING=False
 
 RUN pip3 install "ansible==$ANSIBLE_VERSION" && \
