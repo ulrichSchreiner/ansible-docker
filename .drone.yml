@@ -4,12 +4,16 @@ type: docker
 name: default
 
 steps:
+- name: tag
+  image: registry.gitlab.com/ulrichschreiner/go-web-dev
+  commands:
+    - echo "latest,$(git describe --abbrev=0)" >.tags
+
 - name: publish
   image: plugins/docker
   settings:
     dockerfile: Dockerfile
     repo: ulrichschreiner/ansible
-    auto_tag: true
     username:
       from_secret: hub_username
     password:
