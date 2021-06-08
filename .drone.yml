@@ -7,6 +7,7 @@ steps:
 - name: tag
   image: registry.gitlab.com/ulrichschreiner/go-web-dev
   commands:
+    - git fetch --tags
     - echo "latest,$(git describe --abbrev=0)" >.tags
 
 - name: publish
