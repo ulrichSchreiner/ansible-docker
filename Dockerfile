@@ -23,13 +23,13 @@ RUN apk add --update \
 	unzip \
 	&& rm -rf /var/cache/apk/*
 
-ENV ANSIBLE_VERSION=4.4.0 \
+ENV ANSIBLE_VERSION=4.5.0 \
     ROLEPATH=/ansible/roles \
     ANSIBLE_ROLES_PATH=/ansible/roles:$ANSIBLE_ROLES_PATH \
     ANSIBLE_HOST_KEY_CHECKING=False
 
-RUN pip3 install "ansible==$ANSIBLE_VERSION" && \
-    ansible-galaxy install --roles-path $ROLEPATH kewlfft.aur
+RUN pip3 install "ansible==$ANSIBLE_VERSION"
+RUN ansible-galaxy collection install -p /usr/share/ansible/collections kewlfft.aur
 
 VOLUME /work
 WORKDIR /work
