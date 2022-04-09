@@ -14,6 +14,7 @@ RUN apk add --update \
 	openssl-dev \
 	python3 \
 	python3-dev \
+	py3-dnspython \
 	py3-pip \
 	py3-passlib \
 	rsync \
@@ -23,7 +24,7 @@ RUN apk add --update \
 	unzip \
 	&& rm -rf /var/cache/apk/*
 
-ENV ANSIBLE_VERSION=5.1.0 \
+ENV ANSIBLE_VERSION=5.6.0 \
     ROLEPATH=/ansible/roles \
     ANSIBLE_ROLES_PATH=/ansible/roles:$ANSIBLE_ROLES_PATH \
     ANSIBLE_HOST_KEY_CHECKING=False
