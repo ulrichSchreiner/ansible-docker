@@ -24,7 +24,7 @@ RUN apk add --update \
 	unzip \
 	&& rm -rf /var/cache/apk/*
 
-ENV ANSIBLE_VERSION=8.1.0 \
+ENV ANSIBLE_VERSION=8.5.0 \
     ROLEPATH=/ansible/roles \
     ANSIBLE_ROLES_PATH=/ansible/roles:$ANSIBLE_ROLES_PATH \
     ANSIBLE_HOST_KEY_CHECKING=False
